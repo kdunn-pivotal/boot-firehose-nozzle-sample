@@ -1,6 +1,7 @@
 package io.pivotal.noscan.cf.nozzle;
 
-import io.pivotal.cf.nozzle.config.CfProperties;
+import io.pivotal.cf.nozzle.NozzleProperties;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +17,17 @@ import static org.assertj.core.api.Assertions.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @ActiveProfiles("userpassword")
-public class CfFirehosePropsTest {
+public class NozzlePropsTest {
 
 	@Autowired
-	private CfProperties cfFirehoseProperties;
+	private NozzleProperties nozzleProperties;
 
 	@Test
 	public void testThatPropsArePopulated() {
-		assertThat(cfFirehoseProperties).isNotNull();
-		assertThat(cfFirehoseProperties.getUser()).isEqualTo("auser");
-		assertThat(cfFirehoseProperties.getPassword()).isEqualTo("apass");
-		assertThat(cfFirehoseProperties.isSkipSslValidation()).isFalse();
+		assertThat(nozzleProperties).isNotNull();
+		assertThat(nozzleProperties.getUser()).isEqualTo("auser");
+		assertThat(nozzleProperties.getPassword()).isEqualTo("apass");
+		assertThat(nozzleProperties.isSkipSslValidation()).isFalse();
 	}
 
 	@Configuration
@@ -34,8 +35,8 @@ public class CfFirehosePropsTest {
 	static class SpringConfig {
 
 		@Bean
-		public CfProperties cfFirehoseProperties() {
-			return new CfProperties();
+		public NozzleProperties nozzleProperties() {
+			return new NozzleProperties();
 		}
 
 	}

@@ -1,4 +1,4 @@
-cf:
+nozzle:
   host: api.local.pcfdev.io
   user: admin
   password: admin
